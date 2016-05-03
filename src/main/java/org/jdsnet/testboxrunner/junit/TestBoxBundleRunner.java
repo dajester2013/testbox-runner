@@ -24,7 +24,7 @@ public class TestBoxBundleRunner extends ParentRunner<URL> {
 
 	
 	
-	protected TestBoxBundleRunner(Class<?> testClass) throws InitializationError {
+	public TestBoxBundleRunner(Class<?> testClass) throws InitializationError {
 		super(testClass);
 		// TODO Auto-generated constructor stub
 	}

@@ -1,4 +1,4 @@
-package org.jdsnet.testboxrunner.junit;
+package org.jdsnet.testboxrunner;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
@@ -11,6 +11,14 @@ public interface TestBox {
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.TYPE)
 	@Inherited
+	public @interface SourceDir {
+		String value();
+	}
+
+
+	@Retention(RetentionPolicy.RUNTIME)
+	@Target(ElementType.TYPE)
+	@Inherited
 	public @interface Labels {
 		String[] value();
 	}
@@ -19,7 +27,7 @@ public interface TestBox {
 	@Target(ElementType.TYPE)
 	@Inherited
 	public @interface Reporter {
-		String value() default "junit";
+		String value();
 	}
 	
 }
