@@ -6,28 +6,22 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-public interface TestBox {
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@Inherited
+public @interface TestBox {
 
-	@Retention(RetentionPolicy.RUNTIME)
-	@Target(ElementType.TYPE)
-	@Inherited
-	public @interface SourceDir {
-		String value();
+	public @interface SourceFolder {
+		public enum Type { COMPONENT, MAPPED }
+		
+		Type type() default Type.COMPONENT;
+		String physical();
+		String virtual() default "";
 	}
+	
+	SourceFolder[]	sources();
+	String[]		labels()	default {};
+	String			reporter()	default "";
 
-
-	@Retention(RetentionPolicy.RUNTIME)
-	@Target(ElementType.TYPE)
-	@Inherited
-	public @interface Labels {
-		String[] value();
-	}
-
-	@Retention(RetentionPolicy.RUNTIME)
-	@Target(ElementType.TYPE)
-	@Inherited
-	public @interface Reporter {
-		String value();
-	}
 	
 }
